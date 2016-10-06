@@ -1,5 +1,6 @@
 module asong.assembler;
 
+import asong.rom;
 import asong.stack;
 import std.ascii;
 import std.conv;
@@ -50,11 +51,11 @@ public:
 class Assembler
 {
 public:
-	this()
+	this(ROM rom)
 	{
-		definitions["voicegroup000"] = 0;
+		this.rom = rom;
 
-		// TODO: literal?/?
+		// setup some stuff for parsing
 		operators['('] = 0;
 		operators[')'] = 0;
 		operators['+'] = 1;
@@ -64,22 +65,36 @@ public:
 		operators['%'] = 2;
 	}
 
-	bool assemble(string filename)
+	bool assemble(string filename, int trackOrigin, int headerOrigin, int voicegroup)
 	{
+		// setup this stuff
+		this.trackOrigin = trackOrigin;
+		this.headerOrigin = headerOrigin;
+		definitions["voicegroup000"] = voicegroup;
+
+		// assemble the stuff
 		include(filename);
 		parse();
 
+		rom.save();
+
+		// done
 		return true;
 	}
 
 private:
+	ROM rom;
+
+	int trackOrigin;
+	int headerOrigin;
+
 	Stack!Source sources = new Stack!Source();
 
 	int[string] labels;
 	uint[string] definitions;
 	string[int] pointers;
 
-	int pc = 0;
+	int section = 0;
 
 	void include(string filename)
 	{
@@ -121,8 +136,8 @@ private:
 			parse_line:
 			if (parts[0][$-1] == ':') {
 				// first grab a label
-				labels[parts[0][0..$-1]] = pc;
-				writeln("label: ", parts[0][0..$-1], ": ", labels[parts[0][0..$-1]]);
+				labels[parts[0][0..$-1]] = rom.position;
+				writefln("label: %s: 0x%X6", parts[0][0..$-1], labels[parts[0][0..$-1]]);
 
 				// if finished, move on
 				if (parts.length == 1)
@@ -175,8 +190,8 @@ private:
 						// convert to byte range
 						assert(value <= 0xFF, parts[i] ~ " is too large for a byte!");
 
-						// TODO: write byte
-						pc++;
+						// write value to ROM
+						rom.writeUByte(cast(ubyte)value);
 					}
 					break;
 
@@ -185,20 +200,28 @@ private:
 					for (int i = 1; i < parts.length; i++) {
 						// NOTE: .word will always denote a pointer to a label
 						string label = parts[i];
-						pointers[pc] = label;
+						pointers[rom.position] = label;
 
-						// TODO: write temp pointer
-						pc += 4;
+						// write temp pointer
+						rom.writePointer(0);
 					}
 					break;
 
 				case ".end":
-					writeln("wow kill the parsing");
 					goto kill_parse;
 
 				case ".align":
-					// TODO: start a new section
-					//		 in a valid song there will always be two of these
+					/// there are *always* two of these in a valid song
+					// we track position this way
+					assert(section < 2, "Too many sections!");
+					++section;
+
+					if (section == 1)
+						rom.seek(trackOrigin);
+					else
+						rom.seek(headerOrigin);
+
+					writefln("section start: 0x%X6", rom.position);
 					break;
 
 				case ".global":
@@ -215,12 +238,19 @@ private:
 
 		// fix pointers
 		foreach (offset; pointers.byKey()) {
-			// assures that all pointers have been defined
-			assert(pointers[offset] in labels ||
-				pointers[offset] in definitions,
-				"Label " ~ pointers[offset] ~ " was pointed to but not defined!");
+			// get pointer for offset
+			string pointer = pointers[offset];
 
-			// TODO: seek and fix
+			// seek offset of temp pointer
+			rom.seek(offset);
+
+			// fix pointer
+			if (pointer in labels)
+				rom.writePointer(labels[pointer]);
+			else if (pointer in definitions)
+				rom.writePointer(definitions[pointer]);
+			else
+				assert(false, pointer ~ " was pointed to but is undefined!");
 		}
 	}
 
