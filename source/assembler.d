@@ -2,6 +2,7 @@ module asong.assembler;
 
 import asong.stack;
 import std.ascii;
+import std.conv;
 import std.file;
 import std.stdio;
 import std.string;
@@ -52,6 +53,15 @@ public:
 	this()
 	{
 		definitions["voicegroup000"] = 0;
+
+		// TODO: literal?/?
+		operators['('] = 0;
+		operators[')'] = 0;
+		operators['+'] = 1;
+		operators['-'] = 1;
+		operators['*'] = 2;
+		operators['/'] = 2;
+		operators['%'] = 2;
 	}
 
 	bool assemble(string filename)
@@ -150,7 +160,7 @@ private:
 						// parse argument
 						string[] expression = splitExpression(parts[2]);
 
-						writeln(name, " = ", 42);
+						writeln(name, " = ", expression);
 
 						// evaluate
 						definitions[name] = 42;
@@ -240,10 +250,61 @@ private:
 		return result;
 	}
 
+	int[char] operators;
+
 	// split and convert an expression into reverse polish notation
 	string[] splitExpression(string e)
 	{
 		string[] result;
+		Stack!char ops = new Stack!char();
+
+		int i = 0;
+		while (i < e.length) {
+			// ignore whitespace
+			if (e[i].isWhite()) {
+				while (i < e.length && e[i].isWhite())
+					i++;
+			}
+			// gather number/definition
+			else if (e[i].isAlphaNum() || e[i] == '_') {
+				int s = i;
+				while (i < e.length && (e[i].isAlphaNum() || e[i] == '_')) {
+					i++;
+				}
+				//result ~= e[s..$];
+				//writeln("n: ", e[s..i]);
+				result ~= e[s..i];
+			}
+			// left parenthesis
+			else if (e[i] == '(') {
+				ops.push('(');
+				i++;
+			}
+			// right parenthesis
+			else if (e[i] == ')') {
+				while (!ops.isEmpty && ops.peek() != '(')
+					result ~= to!string(ops.pop());
+
+				ops.pop();
+				i++;
+			}
+			// operators
+			else if (e[i] in operators) {
+				char op = e[i++];
+				while (!ops.isEmpty && operators[ops.peek()] >= operators[op])
+					result ~= to!string(ops.pop());
+
+				ops.push(op);
+			}
+			// invalid characters break the expression
+			else {
+				assert(false, "Unrecognized character " ~ e[i] ~ "!");
+			}
+		}
+
+		while (!ops.isEmpty)
+			result ~= to!string(ops.pop());
+
 		return result;
 	}
 
