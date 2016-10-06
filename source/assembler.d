@@ -77,6 +77,7 @@ private:
 
 	int[string] labels;
 	uint[string] definitions;
+	string[int] pointers;
 
 	int pc = 0;
 
@@ -160,19 +161,35 @@ private:
 						// parse argument
 						string[] expression = splitExpression(parts[2]);
 
-						writeln(name, " = ", expression);
-
 						// evaluate
-						definitions[name] = 42;
+						definitions[name] = evaluateExpression(expression);
 					}
 					break;
 
 				case ".byte":
 					assert(parts.length > 1, ".byte expects at least 1 argument!");
+					for (int i = 1; i < parts.length; i++) {
+						// evaluate token
+						uint value = evaluateExpression(splitExpression(parts[i]));
+
+						// convert to byte range
+						assert(value <= 0xFF, parts[i] ~ " is too large for a byte!");
+
+						// TODO: write byte
+						pc++;
+					}
 					break;
 
 				case ".word":
 					assert(parts.length > 1, ".word expects at least 1 argument!");
+					for (int i = 1; i < parts.length; i++) {
+						// NOTE: .word will always denote a pointer to a label
+						string label = parts[i];
+						pointers[pc] = label;
+
+						// TODO: write temp pointer
+						pc += 4;
+					}
 					break;
 
 				case ".end":
@@ -196,7 +213,15 @@ private:
 
 		kill_parse:
 
-		// TODO: fix labels
+		// fix pointers
+		foreach (offset; pointers.byKey()) {
+			// assures that all pointers have been defined
+			assert(pointers[offset] in labels ||
+				pointers[offset] in definitions,
+				"Label " ~ pointers[offset] ~ " was pointed to but not defined!");
+
+			// TODO: seek and fix
+		}
 	}
 
 	void stripz(ref string s)
@@ -308,5 +333,74 @@ private:
 		return result;
 	}
 
+	// evaluate an expression
+	uint evaluateExpression(string[] expr)
+	{
+		//writeln("expr: ", expr);
+		Stack!uint stack = new Stack!uint();
 
+		foreach (token; expr) {
+			if (token[0] in operators) {
+				if (stack.size == 1) {
+					int a = stack.pop();
+
+					switch (token[0]) {
+						case '-':
+							stack.push(-a);
+							break;
+
+						default:
+							assert(false, "Invalid operator!");
+					}
+				}
+				else {
+					int a = stack.pop();
+					int b = stack.pop();
+
+					switch (token[0]) {
+						case '+':
+							stack.push(a + b);
+							break;
+						case '-':
+							stack.push(b - a);
+							break;
+						case '*':
+							stack.push(a * b);
+							break;
+						case '/':
+							stack.push(b / a);
+							break;
+						case '%':
+							stack.push(b % a);
+							break;
+
+						default:
+							assert(false, "Invalid operator!");
+					}
+				}
+			} else {
+				stack.push(evaluateValue(token));
+			}
+		}
+
+		if (stack.isEmpty)
+			return 0;
+
+		return stack.pop();
+	}
+
+	uint evaluateValue(string value)
+	{
+		// TODO: error catching
+
+		// definition
+		if (value in definitions)
+			return definitions[value];
+
+		// raw value
+		if (value.startsWith("0x"))
+			return to!uint(value[2..$], 16);
+
+		return to!uint(value, 10);
+	}
 }
