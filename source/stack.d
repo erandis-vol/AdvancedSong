@@ -46,4 +46,9 @@ public:
     {
         return _size;
     }
+
+	@property bool isEmpty() const
+	{
+		return size <= 0;
+	}
 }
