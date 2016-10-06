@@ -51,7 +51,7 @@ class Assembler
 public:
 	this()
 	{
-
+		definitions["voicegroup000"] = 0;
 	}
 
 	bool assemble(string filename)
@@ -127,7 +127,17 @@ private:
 			switch (parts[0]) {
 				case ".include":
 					assert(parts.length == 2, ".include expects at 1 argument!");
-					writeln("include file: ", parts[1]);
+					{
+						string f = parts[1];
+
+						// trim the "" characters
+						if (f[0] == '"' && f[$-1] == '"') {
+							f = f[1..$-1];
+						}
+
+						// include the file
+						include(f);
+					}
 					break;
 
 				case ".equ":
@@ -139,6 +149,8 @@ private:
 
 						// parse argument
 						string[] expression = splitExpression(parts[2]);
+
+						writeln(name, " = ", 42);
 
 						// evaluate
 						definitions[name] = 42;
