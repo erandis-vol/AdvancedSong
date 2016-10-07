@@ -24,37 +24,37 @@ Po_Pi_Po_1:
 	.byte		PAN   , c_v+0
 	.byte		N11   , Cn4 , v080
 	.byte	W12
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Dn4 
+	.byte		        Dn4
 	.byte	W12
-	.byte		        Gn4 
+	.byte		        Gn4
 	.byte	W12
-	.byte		N23   , Dn4 
+	.byte		N23   , Dn4
 	.byte	W24
 @ 001   ----------------------------------------
 Po_Pi_Po_1_001:
 	.byte		N11   , Cn4 , v080
 	.byte	W12
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Dn4 
+	.byte		        Dn4
 	.byte	W12
-	.byte		        Gn4 
+	.byte		        Gn4
 	.byte	W12
-	.byte		N23   , Dn4 
+	.byte		N23   , Dn4
 	.byte	W24
 	.byte	PEND
 @ 002   ----------------------------------------
@@ -87,68 +87,68 @@ Po_Pi_Po_1_001:
 @ 011   ----------------------------------------
 	.byte		N11   , Cn4 , v080
 	.byte	W12
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Dn4 
+	.byte		        Dn4
 	.byte	W12
-	.byte		        Gn4 
+	.byte		        Gn4
 	.byte	W36
 @ 012   ----------------------------------------
 Po_Pi_Po_1_012:
 	.byte		N11   , Gn3 , v080
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Gn3 
-	.byte		N11   , Cn4 
+	.byte		        Gn3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Gn3 
-	.byte		N11   , Cn4 
+	.byte		        Gn3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Gn3 
-	.byte		N11   , Cn4 
+	.byte		        Gn3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , Gn3 
-	.byte		N05   , Bn3 
+	.byte		N05   , Gn3
+	.byte		N05   , Bn3
 	.byte	W06
-	.byte		N11   , Gn3 
+	.byte		N11   , Gn3
 	.byte	W12
-	.byte		N17   , Bn2 
-	.byte		N17   , En3 
+	.byte		N17   , Bn2
+	.byte		N17   , En3
 	.byte	W18
-	.byte		N11   , Gn3 
-	.byte		N11   , Dn4 
+	.byte		N11   , Gn3
+	.byte		N11   , Dn4
 	.byte	W12
 	.byte	PEND
 @ 013   ----------------------------------------
 Po_Pi_Po_1_013:
 	.byte		N11   , An3 , v080
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        An3 
-	.byte		N11   , Cn4 
+	.byte		        An3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        An3 
-	.byte		N11   , Cn4 
+	.byte		        An3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        An3 
-	.byte		N11   , Cn4 
+	.byte		        An3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , Fn3 
-	.byte		N05   , Bn3 
+	.byte		N05   , Fn3
+	.byte		N05   , Bn3
 	.byte	W06
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N17   , Gn3 
-	.byte		N17   , Dn4 
+	.byte		N17   , Gn3
+	.byte		N17   , Dn4
 	.byte	W18
-	.byte		N11   , Gn3 
-	.byte		N11   , En4 
+	.byte		N11   , Gn3
+	.byte		N11   , En4
 	.byte	W12
 	.byte	PEND
 @ 014   ----------------------------------------
@@ -171,140 +171,140 @@ Po_Pi_Po_1_013:
 	 .word	Po_Pi_Po_1_013
 @ 020   ----------------------------------------
 	.byte		N11   , Cn4 , v080
-	.byte		N11   , En4 
+	.byte		N11   , En4
 	.byte	W12
-	.byte		N05   , Dn4 
+	.byte		N05   , Dn4
 	.byte	W06
-	.byte		N17   , Cn4 
-	.byte		N17   , En4 
+	.byte		N17   , Cn4
+	.byte		N17   , En4
 	.byte	W18
-	.byte		N05   , Cn4 
-	.byte		N05   , En4 
+	.byte		N05   , Cn4
+	.byte		N05   , En4
 	.byte	W06
-	.byte		        Fn4 
+	.byte		        Fn4
 	.byte	W06
-	.byte		        En4 
-	.byte		N05   , Gn4 
+	.byte		        En4
+	.byte		N05   , Gn4
 	.byte	W06
-	.byte		        An4 
+	.byte		        An4
 	.byte	W06
-	.byte		        En4 
-	.byte		N05   , Gn4 
+	.byte		        En4
+	.byte		N05   , Gn4
 	.byte	W06
-	.byte		N17   
+	.byte		N17
 	.byte	W18
-	.byte		N11   , Bn3 
-	.byte		N11   , Fn4 
+	.byte		N11   , Bn3
+	.byte		N11   , Fn4
 	.byte	W12
 @ 021   ----------------------------------------
 Po_Pi_Po_1_021:
 	.byte		N11   , An3 , v080
-	.byte		N11   , En4 
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Fn4 
+	.byte		        Fn4
 	.byte	W12
-	.byte		        An3 
-	.byte		N11   , En4 
+	.byte		        An3
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Fn4 
+	.byte		        Fn4
 	.byte	W12
-	.byte		N23   , Fn3 
-	.byte		N23   , An3 
-	.byte		N23   , En4 
+	.byte		N23   , Fn3
+	.byte		N23   , An3
+	.byte		N23   , En4
 	.byte	W24
-	.byte		        Gn3 
-	.byte		N23   , Bn3 
+	.byte		        Gn3
+	.byte		N23   , Bn3
 	.byte	W24
 	.byte	PEND
 @ 022   ----------------------------------------
-	.byte		N11   , Cn4 
-	.byte		N11   , En4 
+	.byte		N11   , Cn4
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Cn4 
-	.byte		N11   , En4 
+	.byte		        Cn4
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Cn4 
-	.byte		N11   , En4 
+	.byte		        Cn4
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Fn4 
+	.byte		        Fn4
 	.byte	W12
-	.byte		N05   , En4 
-	.byte		N05   , Gn4 
+	.byte		N05   , En4
+	.byte		N05   , Gn4
 	.byte	W06
-	.byte		N11   , An4 
+	.byte		N11   , An4
 	.byte	W12
-	.byte		N17   , En4 
-	.byte		N17   , Gn4 
+	.byte		N17   , En4
+	.byte		N17   , Gn4
 	.byte	W18
-	.byte		N11   , Fn4 
+	.byte		N11   , Fn4
 	.byte	W12
 @ 023   ----------------------------------------
-	.byte		        An3 
-	.byte		N11   , En4 
+	.byte		        An3
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Fn4 
+	.byte		        Fn4
 	.byte	W12
-	.byte		        An3 
-	.byte		N11   , En4 
+	.byte		        An3
+	.byte		N11   , En4
 	.byte	W12
-	.byte		N44   , Gn3 
-	.byte		N44   , Cn4 
+	.byte		N44   , Gn3
+	.byte		N44   , Cn4
 	.byte	W48
-	.byte		N05   , Gn3 
+	.byte		N05   , Gn3
 	.byte	W06
-	.byte		N05   
+	.byte		N05
 	.byte	W06
 @ 024   ----------------------------------------
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N23   
-	.byte		N23   , En4 
+	.byte		N23
+	.byte		N23   , En4
 	.byte	W24
-	.byte		N11   , Fn4 
+	.byte		N11   , Fn4
 	.byte	W12
-	.byte		        En4 
-	.byte		N11   , Gn4 
+	.byte		        En4
+	.byte		N11   , Gn4
 	.byte	W12
-	.byte		N05   , An4 
+	.byte		N05   , An4
 	.byte	W06
-	.byte		N17   , En4 
-	.byte		N17   , Gn4 
+	.byte		N17   , En4
+	.byte		N17   , Gn4
 	.byte	W18
-	.byte		N11   , Fn4 
+	.byte		N11   , Fn4
 	.byte	W12
 @ 025   ----------------------------------------
 	.byte	PATT
 	 .word	Po_Pi_Po_1_021
 @ 026   ----------------------------------------
 	.byte		N11   , Cn4 , v080
-	.byte		N11   , En4 
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Cn4 
-	.byte		N11   , En4 
+	.byte		        Cn4
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Cn4 
-	.byte		N11   , En4 
+	.byte		        Cn4
+	.byte		N11   , En4
 	.byte	W12
-	.byte		        Dn4 
-	.byte		N11   , Fn4 
+	.byte		        Dn4
+	.byte		N11   , Fn4
 	.byte	W12
-	.byte		        En4 
-	.byte		N11   , Gn4 
+	.byte		        En4
+	.byte		N11   , Gn4
 	.byte	W12
-	.byte		        En4 
-	.byte		N11   , Cn5 
+	.byte		        En4
+	.byte		N11   , Cn5
 	.byte	W12
-	.byte		        En4 
-	.byte		N11   , Bn4 
+	.byte		        En4
+	.byte		N11   , Bn4
 	.byte	W12
-	.byte		TIE   , En4 
-	.byte		TIE   , Cn5 
+	.byte		TIE   , En4
+	.byte		TIE   , Cn5
 	.byte	W12
 @ 027   ----------------------------------------
 	.byte	W92
 	.byte	W03
-	.byte		EOT   , En4 
-	.byte		        Cn5 
+	.byte		EOT   , En4
+	.byte		        Cn5
 	.byte	W01
 @ 028   ----------------------------------------
 	.byte	PATT
@@ -333,110 +333,110 @@ Po_Pi_Po_1_021:
 @ 036   ----------------------------------------
 Po_Pi_Po_1_036:
 	.byte		N23   , Cn3 , v080
-	.byte		N23   , En3 
+	.byte		N23   , En3
 	.byte	W24
-	.byte		        Cn3 
+	.byte		        Cn3
 	.byte	W24
-	.byte		N11   , Bn2 
-	.byte		N11   , Dn3 
+	.byte		N11   , Bn2
+	.byte		N11   , Dn3
 	.byte	W12
-	.byte		N23   , Gn3 
+	.byte		N23   , Gn3
 	.byte	W24
-	.byte		N11   , Bn2 
-	.byte		N11   , Fn3 
+	.byte		N11   , Bn2
+	.byte		N11   , Fn3
 	.byte	W12
 	.byte	PEND
 @ 037   ----------------------------------------
-	.byte		        Cn3 
-	.byte		N11   , En3 
+	.byte		        Cn3
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , Fn3 
+	.byte		        Cn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , En3 
+	.byte		        Cn3
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , Fn3 
+	.byte		        Cn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		N23   , An2 
-	.byte		N23   , En3 
+	.byte		N23   , An2
+	.byte		N23   , En3
 	.byte	W24
-	.byte		        Bn2 
-	.byte		N23   , Dn3 
+	.byte		        Bn2
+	.byte		N23   , Dn3
 	.byte	W24
 @ 038   ----------------------------------------
 	.byte	PATT
 	 .word	Po_Pi_Po_1_036
 @ 039   ----------------------------------------
 	.byte		N11   , Cn3 , v080
-	.byte		N11   , En3 
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , Fn3 
+	.byte		        Cn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , En3 
+	.byte		        Cn3
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Dn3 
-	.byte		N11   , Fn3 
+	.byte		        Dn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		N44   , En3 
-	.byte		N44   , Gn3 
+	.byte		N44   , En3
+	.byte		N44   , Gn3
 	.byte	W48
 @ 040   ----------------------------------------
-	.byte		N23   , Gn2 
-	.byte		N23   , Cn3 
+	.byte		N23   , Gn2
+	.byte		N23   , Cn3
 	.byte	W24
-	.byte		        En3 
-	.byte		N23   , Cn4 
+	.byte		        En3
+	.byte		N23   , Cn4
 	.byte	W24
-	.byte		N11   , En3 
-	.byte		N11   , Bn3 
+	.byte		N11   , En3
+	.byte		N11   , Bn3
 	.byte	W12
-	.byte		N23   , Gn3 
+	.byte		N23   , Gn3
 	.byte	W24
-	.byte		N11   , Fn3 
+	.byte		N11   , Fn3
 	.byte	W12
 @ 041   ----------------------------------------
-	.byte		        Cn3 
-	.byte		N11   , En3 
+	.byte		        Cn3
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , Fn3 
+	.byte		        Cn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , En3 
+	.byte		        Cn3
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Dn3 
-	.byte		N11   , Fn3 
+	.byte		        Dn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		N23   , En3 
-	.byte		N23   , Gn3 
+	.byte		N23   , En3
+	.byte		N23   , Gn3
 	.byte	W24
-	.byte		        Gn2 
-	.byte		N23   , Cn3 
+	.byte		        Gn2
+	.byte		N23   , Cn3
 	.byte	W24
 @ 042   ----------------------------------------
 	.byte	W24
-	.byte		N11   
-	.byte		N11   , En3 
+	.byte		N11
+	.byte		N11   , En3
 	.byte	W12
-	.byte		        Cn3 
-	.byte		N11   , Fn3 
+	.byte		        Cn3
+	.byte		N11   , Fn3
 	.byte	W12
-	.byte		        En3 
-	.byte		N11   , Gn3 
+	.byte		        En3
+	.byte		N11   , Gn3
 	.byte	W12
-	.byte		        En3 
-	.byte		N11   , Cn4 
+	.byte		        En3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N23   , En3 
-	.byte		N23   , Bn3 
+	.byte		N23   , En3
+	.byte		N23   , Bn3
 	.byte	W24
 @ 043   ----------------------------------------
-	.byte		N92   , An3 
-	.byte		N92   , Cn4 
+	.byte		N92   , An3
+	.byte		N92   , Cn4
 	.byte	W96
 @ 044   ----------------------------------------
 	.byte	PATT
@@ -447,51 +447,51 @@ Po_Pi_Po_1_036:
 @ 046   ----------------------------------------
 Po_Pi_Po_1_046:
 	.byte		N23   , Cn3 , v080
-	.byte		N23   , En3 
+	.byte		N23   , En3
 	.byte	W24
-	.byte		        Gn3 
-	.byte		N23   , Cn4 
+	.byte		        Gn3
+	.byte		N23   , Cn4
 	.byte	W24
-	.byte		N11   , Gn3 
-	.byte		N11   , Dn4 
+	.byte		N11   , Gn3
+	.byte		N11   , Dn4
 	.byte	W12
-	.byte		        Gn3 
-	.byte		N11   , Cn4 
+	.byte		        Gn3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Gn3 
-	.byte		N11   , Bn3 
+	.byte		        Gn3
+	.byte		N11   , Bn3
 	.byte	W12
-	.byte		        Gn3 
+	.byte		        Gn3
 	.byte	W12
 	.byte	PEND
 @ 047   ----------------------------------------
 Po_Pi_Po_1_047:
 	.byte		N11   , An3 , v080
-	.byte		N11   , Cn4 
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , An3 
-	.byte		N05   , Cn4 
+	.byte		N05   , An3
+	.byte		N05   , Cn4
 	.byte	W06
-	.byte		N17   , An3 
-	.byte		N17   , Cn4 
+	.byte		N17   , An3
+	.byte		N17   , Cn4
 	.byte	W18
-	.byte		N11   , An3 
-	.byte		N11   , Cn4 
+	.byte		N11   , An3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Fn3 
-	.byte		N11   , Cn4 
+	.byte		        Fn3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		        Fn3 
-	.byte		N11   , Cn4 
+	.byte		        Fn3
+	.byte		N11   , Cn4
 	.byte	W12
-	.byte		N05   , Gn3 
-	.byte		N05   , Cn4 
+	.byte		N05   , Gn3
+	.byte		N05   , Cn4
 	.byte	W06
-	.byte		        Gn3 
-	.byte		N05   , Cn4 
+	.byte		        Gn3
+	.byte		N05   , Cn4
 	.byte	W06
-	.byte		N11   , Gn3 
-	.byte		N11   , Cn4 
+	.byte		N11   , Gn3
+	.byte		N11   , Cn4
 	.byte	W12
 	.byte	PEND
 @ 048   ----------------------------------------
@@ -526,38 +526,38 @@ Po_Pi_Po_1_047:
 	 .word	Po_Pi_Po_1_001
 @ 058   ----------------------------------------
 	.byte		N23   , Gn3 , v080
-	.byte		N23   , Cn4 
+	.byte		N23   , Cn4
 	.byte	W24
-	.byte		        Gn3 
-	.byte		N23   , Dn4 
+	.byte		        Gn3
+	.byte		N23   , Dn4
 	.byte	W24
-	.byte		        Gn3 
-	.byte		N23   , En4 
+	.byte		        Gn3
+	.byte		N23   , En4
 	.byte	W24
-	.byte		        Gn3 
-	.byte		N23   , Fn4 
+	.byte		        Gn3
+	.byte		N23   , Fn4
 	.byte	W24
 @ 059   ----------------------------------------
-	.byte		N11   , En4 
-	.byte		N11   , Gn4 
+	.byte		N11   , En4
+	.byte		N11   , Gn4
 	.byte	W12
-	.byte		N05   , Fn4 
+	.byte		N05   , Fn4
 	.byte	W06
-	.byte		N23   , En4 
+	.byte		N23   , En4
 	.byte	W30
-	.byte		N11   , Gn3 
-	.byte		N11   , Dn4 
+	.byte		N11   , Gn3
+	.byte		N11   , Dn4
 	.byte	W12
-	.byte		N05   , Cn4 
+	.byte		N05   , Cn4
 	.byte	W06
-	.byte		N17   , Gn3 
-	.byte		N17   , Bn3 
+	.byte		N17   , Gn3
+	.byte		N17   , Bn3
 	.byte	W18
-	.byte		N11   
-	.byte		N11   , Dn4 
+	.byte		N11
+	.byte		N11   , Dn4
 	.byte	W12
 @ 060   ----------------------------------------
-	.byte		N92   , Cn4 
+	.byte		N92   , Cn4
 	.byte	W92
 	.byte	W03
 	.byte	GOTO
@@ -571,16 +571,16 @@ Po_Pi_Po_2:
 	.byte		VOL   , 127*Po_Pi_Po_mvl/mxv
 	.byte	KEYSH , Po_Pi_Po_key+0
 @ 000   ----------------------------------------
-	.byte		VOICE , 35
+	.byte		VOICE , 48
 	.byte		N44   , Cn3 , v080
 	.byte	W48
-	.byte		N44   
+	.byte		N44
 	.byte	W48
 @ 001   ----------------------------------------
 Po_Pi_Po_2_001:
 	.byte		N44   , Cn3 , v080
 	.byte	W48
-	.byte		N44   
+	.byte		N44
 	.byte	W48
 	.byte	PEND
 @ 002   ----------------------------------------
@@ -593,38 +593,38 @@ Po_Pi_Po_2_001:
 Po_Pi_Po_2_004:
 	.byte		N11   , En2 , v080
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Fn2 
+	.byte		        Fn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Cn3 
+	.byte		        Cn3
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Gn2 
+	.byte		        Gn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
 	.byte	PEND
 @ 005   ----------------------------------------
 Po_Pi_Po_2_005:
 	.byte		N11   , En2 , v080
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Fn2 
+	.byte		        Fn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Cn2 
+	.byte		        Cn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Gn2 
+	.byte		        Gn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
 	.byte	PEND
 @ 006   ----------------------------------------
@@ -645,54 +645,54 @@ Po_Pi_Po_2_005:
 @ 011   ----------------------------------------
 	.byte		N11   , En2 , v080
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Fn2 
+	.byte		        Fn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		        Cn2 
+	.byte		        Cn2
 	.byte	W12
-	.byte		N11   
+	.byte		N11
 	.byte	W12
-	.byte		N23   , Gn2 
+	.byte		N23   , Gn2
 	.byte	W24
 @ 012   ----------------------------------------
 Po_Pi_Po_2_012:
 	.byte		N11   , Cn1 , v080
 	.byte	W12
-	.byte		        Cn2 
+	.byte		        Cn2
 	.byte	W12
-	.byte		        Cn1 
+	.byte		        Cn1
 	.byte	W12
-	.byte		        Cn2 
+	.byte		        Cn2
 	.byte	W12
-	.byte		        En1 
+	.byte		        En1
 	.byte	W12
-	.byte		        En2 
+	.byte		        En2
 	.byte	W12
-	.byte		        En1 
+	.byte		        En1
 	.byte	W12
-	.byte		        En2 
+	.byte		        En2
 	.byte	W12
 	.byte	PEND
 @ 013   ----------------------------------------
 Po_Pi_Po_2_013:
 	.byte		N11   , An1 , v080
 	.byte	W12
-	.byte		        An2 
+	.byte		        An2
 	.byte	W12
-	.byte		        An1 
+	.byte		        An1
 	.byte	W12
-	.byte		        An2 
+	.byte		        An2
 	.byte	W12
-	.byte		        Fn1 
+	.byte		        Fn1
 	.byte	W12
-	.byte		        Fn2 
+	.byte		        Fn2
 	.byte	W12
-	.byte		        Gn1 
+	.byte		        Gn1
 	.byte	W12
-	.byte		        Gn2 
+	.byte		        Gn2
 	.byte	W12
 	.byte	PEND
 @ 014   ----------------------------------------
@@ -779,17 +779,17 @@ Po_Pi_Po_2_013:
 @ 041   ----------------------------------------
 	.byte		N11   , An1 , v080
 	.byte	W12
-	.byte		        An2 
+	.byte		        An2
 	.byte	W12
-	.byte		        An1 
+	.byte		        An1
 	.byte	W12
-	.byte		        An2 
+	.byte		        An2
 	.byte	W12
-	.byte		        Fn1 
+	.byte		        Fn1
 	.byte	W12
-	.byte		        Fn2 
+	.byte		        Fn2
 	.byte	W12
-	.byte		N23   , Gn1 
+	.byte		N23   , Gn1
 	.byte	W24
 @ 042   ----------------------------------------
 	.byte	PATT
@@ -797,20 +797,20 @@ Po_Pi_Po_2_013:
 @ 043   ----------------------------------------
 	.byte		N11   , An1 , v080
 	.byte	W12
-	.byte		        An2 
+	.byte		        An2
 	.byte	W12
-	.byte		        An1 
+	.byte		        An1
 	.byte	W12
-	.byte		        An2 
+	.byte		        An2
 	.byte	W12
-	.byte		N15   , Gn1 
-	.byte		N15   , Dn2 
+	.byte		N15   , Gn1
+	.byte		N15   , Dn2
 	.byte	W16
-	.byte		        Gn1 
-	.byte		N15   , Dn2 
+	.byte		        Gn1
+	.byte		N15   , Dn2
 	.byte	W16
-	.byte		        Gn1 
-	.byte		N15   , Dn2 
+	.byte		        Gn1
+	.byte		N15   , Dn2
 	.byte	W16
 @ 044   ----------------------------------------
 	.byte	PATT
@@ -863,11 +863,11 @@ Po_Pi_Po_2_013:
 @ 060   ----------------------------------------
 	.byte		N23   , Gn2 , v080
 	.byte	W24
-	.byte		        Fn2 
+	.byte		        Fn2
 	.byte	W24
-	.byte		        En2 
+	.byte		        En2
 	.byte	W24
-	.byte		        Cn2 
+	.byte		        Cn2
 	.byte	W23
 	.byte	GOTO
 	.word	Po_Pi_Po_2
