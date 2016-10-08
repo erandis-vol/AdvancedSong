@@ -86,7 +86,7 @@ public:
 		return ptr & 0x1FFFFFF;
 	}
 
-	/*int peekPointer()
+	int peekPointer()
 	{
 		int ptr = peekInt32();
 
@@ -97,7 +97,7 @@ public:
 			return ptr & 0x1FFFFFF;
 
 		return -1;
-	}*/
+	}
 
 	void writeUByte(ubyte value)
 	{
@@ -114,7 +114,9 @@ public:
 
 	void writePointer(int offset)
 	{
-		if (offset)
+		//writefln("write pointer to: %07x", offset);
+
+		if (offset > 0 && offset <= 0x1FFFFFF)
 			writeInt32(offset | 0x8000000);
 		else
 			writeInt32(0);

@@ -19,28 +19,47 @@ int findSongTable(ROM rom)
 
 	// read pointer to song table
 	rom.seek(selectSongOffset + 0x28);
-	int songTablePtr = rom.readInt32();
-
-	// if it was actually a pointer, return offset
-	if (songTablePtr >= 0x8000000 && songTablePtr <= 0x9FFFFFF)
-		return songTablePtr & 0x1FFFFFF;
-
-	// otherwise failure
-	return -1;
+	return rom.peekPointer();
 }
 
+int getSongTableLength(ROM rom)
+{
+	int count = 0;
+
+	// basically, while there is a valid pointer
+	// we have a valid entry, so continue
+	while (rom.peekPointer() >= 0) {
+		rom.skip(8);
+		count++;
+	}
+
+	return count;
+}
 
 void main()
 {
 	writeln("Opening \"bpre.gba\".");
 	auto rom = new ROM("bpre.gba");
-	int songTable = rom.findSongTable();
-	if (songTable == -1)
-		writeln("Song table not found!");
-	else
-		writefln("Song table at: 0x%07X", songTable);
 
-	//writeln("Doing things to Po Pi Po.s...");
-	//auto a = new Assembler(rom);
-	//a.assemble("Po Pi Po.s", 0x900000, 0x800000, 0x48ABB0);
+	int songTable = rom.findSongTable();
+	if (songTable == -1) {
+		writeln("Song table not found!");
+		return;
+	}
+
+	writefln("Song table at: 0x%07X", songTable);
+
+	rom.seek(songTable);
+	writeln("Song table length: ", rom.getSongTableLength(), " songs");
+
+	// assemble po pi po
+	auto a = new Assembler(rom);
+	a.assemble("Po Pi Po.s", 0x900000, 0x800000, 0x48ABB0);
+
+	// adjust song table
+	rom.seek(songTable + 0x12C * 8);
+	rom.writePointer(0x800000);
+
+	// save ROM
+	rom.save();
 }

@@ -76,7 +76,7 @@ public:
 		include(filename);
 		parse();
 
-		rom.save();
+		//rom.save();
 
 		// done
 		return true;

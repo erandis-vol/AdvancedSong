@@ -19,7 +19,7 @@ Po_Pi_Po_1:
 	.byte	KEYSH , Po_Pi_Po_key+0
 @ 000   ----------------------------------------
 	.byte	TEMPO , 113*Po_Pi_Po_tbs/2
-	.byte		VOICE , 73
+	.byte		VOICE , 56
 	.byte		VOL   , 100*Po_Pi_Po_mvl/mxv
 	.byte		PAN   , c_v+0
 	.byte		N11   , Cn4 , v080
