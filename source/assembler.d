@@ -19,14 +19,6 @@ public:
 
 		// read contents of file into lines
 		lines = splitLines(readText(filename));
-
-		// TODO: this is so shameful
-		//		 a null string is an empty string
-		/*for (int i = 0; i < lines.length; i++) {
-			if (lines[i] == null) {
-				lines[i] = "@";
-			}
-		}*/
 	}
 
 	string nextLine()
@@ -42,7 +34,13 @@ public:
 		return current >= lines.length;
 	}
 
-//private:
+	@property int currentLine() const
+	{
+		// returns the current line of the source
+		return current + 1;
+	}
+
+private:
 	string path;
 	string[] lines;
 	int current = 0;
@@ -67,18 +65,22 @@ public:
 
 	bool assemble(string filename, int trackOrigin, int headerOrigin, int voicegroup)
 	{
-		// setup this stuff
-		this.trackOrigin = trackOrigin;
-		this.headerOrigin = headerOrigin;
-		definitions["voicegroup000"] = voicegroup;
+		// NOTE: rom is not saved here
+		try
+		{
+			// setup this stuff
+			this.trackOrigin = trackOrigin;
+			this.headerOrigin = headerOrigin;
+			definitions["voicegroup000"] = voicegroup;
 
-		// assemble the stuff
-		include(filename);
-		parse();
-
-		//rom.save();
-
-		// done
+			// assemble the stuff
+			include(filename);
+			parse();
+		}
+		catch
+		{
+			return false;
+		}
 		return true;
 	}
 
@@ -89,12 +91,39 @@ private:
 	int headerOrigin;
 
 	Stack!Source sources = new Stack!Source();
+	Source source = null;
 
 	int[string] labels;
 	uint[string] definitions;
 	string[int] pointers;
 
 	int section = 0;
+
+	void error(string message)
+	{
+		// print error message
+		if (source !is null)
+			writefln("ERROR: %d: %s", source.currentLine, message);
+		else
+			writefln("ERROR: %s", message);
+
+		// remove all sources
+		while (!sources.isEmpty())
+			sources.pop();
+
+		// remove current source
+		source = null;
+
+		// kill the parser -- caught in the assemble() method
+		throw new Exception(null);
+	}
+
+	void errorT(bool condition, string message)
+	{
+		// throw error if condition fails
+		if (!condition)
+			error(message);
+	}
 
 	void include(string filename)
 	{
@@ -109,7 +138,7 @@ private:
 		// single pass assembler
 		while (!sources.isEmpty()) {
 			// get current source
-			Source source = sources.peek();
+			source = sources.peek();
 
 			// pop source if EOF
 			if (source.endOfFile) {
@@ -137,7 +166,7 @@ private:
 			if (parts[0][$-1] == ':') {
 				// first grab a label
 				labels[parts[0][0..$-1]] = rom.position;
-				writefln("label: %s: 0x%X6", parts[0][0..$-1], labels[parts[0][0..$-1]]);
+				//writefln("label: %s: 0x%X6", parts[0][0..$-1], labels[parts[0][0..$-1]]);
 
 				// if finished, move on
 				if (parts.length == 1)
@@ -152,7 +181,7 @@ private:
 			// anything else is invalid
 			switch (parts[0]) {
 				case ".include":
-					assert(parts.length == 2, ".include expects at 1 argument!");
+					errorT(parts.length == 2, ".include expects 1 argument!");
 					{
 						string f = parts[1];
 
@@ -167,11 +196,11 @@ private:
 					break;
 
 				case ".equ":
-					assert(parts.length == 3, ".equ expects 2 arguments!");
+					errorT(parts.length == 3, ".equ expects 2 arguments!");
 					{
 						// parse name
 						string name = parts[1];
-						assert(name !in definitions, name ~ " has already been defined!");
+						errorT(name !in definitions, name ~ " has already been defined!");
 
 						// parse argument
 						string[] expression = splitExpression(parts[2]);
@@ -182,13 +211,13 @@ private:
 					break;
 
 				case ".byte":
-					assert(parts.length > 1, ".byte expects at least 1 argument!");
+					errorT(parts.length > 1, ".byte expects at least 1 argument!");
 					for (int i = 1; i < parts.length; i++) {
 						// evaluate token
 						uint value = evaluateExpression(splitExpression(parts[i]));
 
 						// convert to byte range
-						assert(value <= 0xFF, parts[i] ~ " is too large for a byte!");
+						errorT(value <= 0xFF, parts[i] ~ " is too large for a byte!");
 
 						// write value to ROM
 						rom.writeUByte(cast(ubyte)value);
@@ -196,7 +225,7 @@ private:
 					break;
 
 				case ".word":
-					assert(parts.length > 1, ".word expects at least 1 argument!");
+					errorT(parts.length > 1, ".word expects at least 1 argument!");
 					for (int i = 1; i < parts.length; i++) {
 						// NOTE: .word will always denote a pointer to a label
 						string label = parts[i];
@@ -213,7 +242,7 @@ private:
 				case ".align":
 					/// there are *always* two of these in a valid song
 					// we track position this way
-					assert(section < 2, "Too many sections!");
+					errorT(section < 2, "Too many sections!");
 					++section;
 
 					if (section == 1)
@@ -230,7 +259,10 @@ private:
 					break;
 
 				default:
-					assert(false, "Invalid command " ~ parts[0] ~ "!");
+					//assert(false, "Invalid command " ~ parts[0] ~ "!");
+					error("Invalid command" ~ parts[0] ~ "!");
+					break;
+
 			}
 		}
 
@@ -250,7 +282,8 @@ private:
 			else if (pointer in definitions)
 				rom.writePointer(definitions[pointer]);
 			else
-				assert(false, pointer ~ " was pointed to but is undefined!");
+				//assert(false, pointer ~ " was pointed to but is undefined!");
+				error(pointer ~ " was pointed to but is undefined!");
 		}
 	}
 
@@ -353,7 +386,7 @@ private:
 			}
 			// invalid characters break the expression
 			else {
-				assert(false, "Unrecognized character " ~ e[i] ~ "!");
+				error("Unrecognized character " ~ e[i] ~ "!");
 			}
 		}
 
@@ -421,16 +454,25 @@ private:
 
 	uint evaluateValue(string value)
 	{
-		// TODO: error catching
+		try
+		{
+			// definition
+			if (value in definitions)
+				return definitions[value];
 
-		// definition
-		if (value in definitions)
-			return definitions[value];
+			// hexadecimal number
+			if (value.startsWith("0x"))
+				return to!uint(value[2..$], 16);
 
-		// raw value
-		if (value.startsWith("0x"))
-			return to!uint(value[2..$], 16);
+			// decimal number
+			return to!uint(value, 10);
+		}
+		catch
+		{
+			error(value ~ " is not a value!");
+		}
 
-		return to!uint(value, 10);
+		// NOTE: only to satisfy compiler, will never happen
+		return 0;
 	}
 }

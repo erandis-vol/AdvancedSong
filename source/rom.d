@@ -153,4 +153,9 @@ public:
 	{
 		return p;
 	}
+
+	@property int length() const
+	{
+		return cast(int)buffer.length;
+	}
 }

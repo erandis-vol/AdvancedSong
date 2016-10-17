@@ -28,7 +28,7 @@ int getSongTableLength(ROM rom)
 
 	// basically, while there is a valid pointer
 	// we have a valid entry, so continue
-	while (rom.peekPointer() >= 0) {
+	while (rom.peekPointer() >= 0 && rom.position < rom.length - 8) {
 		rom.skip(8);
 		count++;
 	}
@@ -54,7 +54,10 @@ void main()
 
 	// assemble po pi po
 	auto a = new Assembler(rom);
-	a.assemble("Po Pi Po.s", 0x900000, 0x800000, 0x48ABB0);
+	if (a.assemble("Po Pi Po.s", 0x900000, 0x800000, 0x48ABB0))
+		writeln("Assembled successfully!");
+	else
+		writeln("Assembling aborted.");
 
 	// adjust song table
 	rom.seek(songTable + 0x12C * 8);
